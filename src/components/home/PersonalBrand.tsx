@@ -97,26 +97,26 @@ export function PersonalBrand() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch mb-16">
           {/* Portrait Column */}
           <div className="lg:col-span-5 relative group">
-            <div className="relative aspect-[3/4] w-full rounded-2xl overflow-hidden bg-zinc-900 border border-white/10 shadow-2xl">
+            <div className="relative aspect-[4/5] w-full rounded-2xl overflow-hidden bg-zinc-950 border border-white/10 shadow-2xl">
               <Image
                 src="/images/samuel-portrait.jpg"
                 alt="Samuel Tafese — Founder & Creative Technologist at VENOMOUS"
                 fill
                 priority
-                className="object-cover object-top filter brightness-95 contrast-105 group-hover:scale-[1.02] transition-transform duration-500"
+                className="object-cover object-center filter contrast-105 group-hover:scale-[1.02] transition-transform duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent" />
 
               {/* Portrait Overlay Badge */}
-              <div className="absolute bottom-6 left-6 right-6">
-                <span className="text-[11px] font-mono tracking-widest text-orange-400 uppercase font-semibold">
+              <div className="absolute bottom-5 left-5 right-5 p-4 rounded-xl bg-black/60 backdrop-blur-md border border-white/10">
+                <span className="text-[10px] font-mono tracking-widest text-orange-400 uppercase font-semibold block mb-0.5">
                   FOUNDER • VENOMOUS
                 </span>
-                <h3 className="text-2xl font-black tracking-tight text-white uppercase font-sans mt-0.5">
+                <h3 className="text-xl sm:text-2xl font-black tracking-tight text-white uppercase font-sans">
                   Samuel Tafese
                 </h3>
-                <p className="text-xs font-mono text-zinc-400 mt-1">
-                  TafeSES43@GMAIL.COM • @SAM_FULLSTACK_D
+                <p className="text-[11px] font-mono text-zinc-400 mt-0.5">
+                  Web Developer • Video Editor • Graphic Designer
                 </p>
               </div>
             </div>
