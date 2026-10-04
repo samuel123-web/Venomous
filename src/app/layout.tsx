@@ -6,8 +6,8 @@ import { JsonLd } from "@/components/seo/JsonLd";
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#0B0B0B" },
-    { media: "(prefers-color-scheme: light)", color: "#F8F9FA" },
+    { media: "(prefers-color-scheme: dark)", color: "#090909" },
+    { media: "(prefers-color-scheme: light)", color: "#FAFAFA" },
   ],
   width: "device-width",
   initialScale: 1,
@@ -78,7 +78,7 @@ export default function RootLayout({
       <head>
         <JsonLd />
       </head>
-      <body className="min-h-full flex flex-col antialiased bg-[#0B0B0B] text-white selection:bg-[#2563EB] selection:text-white">
+      <body className="min-h-full flex flex-col antialiased bg-[var(--background)] text-[var(--text-primary)] selection:bg-[#2563EB] selection:text-white transition-colors duration-250">
         <ThemeProvider>
           <CustomCursor />
           {children}

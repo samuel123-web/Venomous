@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { Sun, Moon } from "lucide-react";
 
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -14,25 +14,49 @@ export function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <div className="w-9 h-9 rounded-full border border-white/10 dark:border-white/10 bg-white/5 flex items-center justify-center text-zinc-400" />
+      <div
+        className="w-9 h-9 rounded-full border border-[var(--border)] bg-[var(--surface-elevated)] flex items-center justify-center opacity-60"
+        aria-hidden="true"
+      />
     );
   }
 
-  const isDark = theme === "dark";
+  const currentTheme = resolvedTheme || theme;
+  const isDark = currentTheme === "dark";
+
+  const toggleTheme = () => {
+    setTheme(isDark ? "light" : "dark");
+  };
 
   return (
     <button
-      onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="relative p-2 rounded-full border border-white/10 dark:border-white/10 bg-white/5 dark:bg-zinc-900/60 hover:border-blue-500/50 hover:bg-blue-500/10 text-zinc-400 hover:text-white dark:hover:text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500/40"
+      type="button"
+      onClick={toggleTheme}
+      className="relative w-9 h-9 rounded-full border border-[var(--border)] bg-[var(--surface-elevated)] hover:border-blue-500/60 hover:bg-blue-500/10 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all duration-200 flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)] shadow-sm active:scale-95"
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
       title={isDark ? "Switch to light mode" : "Switch to dark mode"}
     >
-      <div className="w-5 h-5 flex items-center justify-center">
-        {isDark ? (
-          <Sun className="w-4 h-4 text-orange-400 transition-transform duration-300 hover:rotate-45" />
-        ) : (
-          <Moon className="w-4 h-4 text-blue-500 transition-transform duration-300 hover:-rotate-12" />
-        )}
+      <span className="sr-only">
+        {isDark ? "Switch to light mode" : "Switch to dark mode"}
+      </span>
+
+      <div className="relative w-4 h-4 flex items-center justify-center">
+        {/* Sun Icon for Light mode switch */}
+        <Sun
+          className={`w-4 h-4 text-orange-400 absolute transition-all duration-300 transform ${
+            isDark
+              ? "rotate-0 scale-100 opacity-100"
+              : "-rotate-90 scale-0 opacity-0"
+          }`}
+        />
+        {/* Moon Icon for Dark mode switch */}
+        <Moon
+          className={`w-4 h-4 text-blue-600 absolute transition-all duration-300 transform ${
+            isDark
+              ? "rotate-90 scale-0 opacity-0"
+              : "rotate-0 scale-100 opacity-100"
+          }`}
+        />
       </div>
     </button>
   );

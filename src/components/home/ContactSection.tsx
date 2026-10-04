@@ -76,23 +76,23 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="relative py-24 sm:py-32 bg-[#0B0B0B] dark:bg-[#0B0B0B] light:bg-[#F8F9FA] overflow-hidden">
+    <section id="contact" className="relative py-24 sm:py-32 bg-[var(--background)] overflow-hidden transition-colors duration-250">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="max-w-3xl mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-mono uppercase tracking-widest mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-600 dark:text-blue-400 text-xs font-mono uppercase tracking-widest mb-4 font-semibold">
             <Sparkles className="w-3.5 h-3.5" />
             <span>START A PROJECT</span>
           </div>
 
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white dark:text-white light:text-zinc-950 uppercase leading-[1.05] mb-4">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-[var(--text-primary)] uppercase leading-[1.05] mb-4">
             Have A Project In Mind? <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-orange-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-500 to-orange-500 dark:from-blue-400 dark:via-indigo-300 dark:to-orange-400">
               Let&apos;s Build It.
             </span>
           </h2>
 
-          <p className="text-base sm:text-lg text-zinc-400 dark:text-zinc-400 light:text-zinc-600 leading-relaxed font-light">
+          <p className="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed font-light">
             Tell me what you&apos;re building, what you need, and where you want to go. Every project inquiry receives personal scoping from Samuel Tafese.
           </p>
         </div>
@@ -101,15 +101,15 @@ export function ContactSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           {/* Left Column: Quick Actions & Direct Channels */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="p-6 sm:p-8 rounded-2xl bg-zinc-900/60 dark:bg-zinc-900/60 light:bg-white border border-white/10 dark:border-white/10 light:border-black/5 shadow-xl space-y-6">
+            <div className="p-6 sm:p-8 rounded-2xl bg-[var(--surface-card)] border border-[var(--border)] shadow-xl space-y-6">
               <div>
-                <span className="text-xs font-mono uppercase tracking-widest text-zinc-400 block mb-1">
+                <span className="text-xs font-mono uppercase tracking-widest text-[var(--text-muted)] block mb-1 font-semibold">
                   DIRECT FAST CHANNELS
                 </span>
-                <h3 className="text-xl font-bold text-white dark:text-white light:text-zinc-900 uppercase">
+                <h3 className="text-xl font-bold text-[var(--text-primary)] uppercase">
                   Instant Connections
                 </h3>
-                <p className="text-xs text-zinc-400 mt-1 leading-relaxed">
+                <p className="text-xs text-[var(--text-secondary)] mt-1 leading-relaxed">
                   Prefer chatting directly over instant messaging? Reach out right away through verified personal channels.
                 </p>
               </div>
@@ -117,30 +117,31 @@ export function ContactSection() {
               {/* Quick Actions List */}
               <div className="space-y-3">
                 {/* Email Direct */}
-                <div className="p-4 rounded-xl bg-black/40 dark:bg-black/40 light:bg-zinc-50 border border-white/5 flex items-center justify-between">
+                <div className="p-4 rounded-xl bg-[var(--surface-elevated)] border border-[var(--border)] flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="p-2.5 rounded-lg bg-blue-600/20 text-blue-400 border border-blue-500/30">
+                    <div className="p-2.5 rounded-lg bg-blue-600/15 text-blue-600 dark:text-blue-400 border border-blue-500/30">
                       <Mail className="w-4 h-4" />
                     </div>
                     <div>
-                      <span className="text-xs font-mono text-zinc-400 uppercase block">
+                      <span className="text-xs font-mono text-[var(--text-muted)] uppercase block">
                         Official Inquiries
                       </span>
                       <a
                         href={CONTACT_INFO.emailHref}
-                        className="text-sm font-bold text-white dark:text-white light:text-zinc-900 hover:text-blue-400 transition-colors"
+                        className="text-sm font-bold text-[var(--text-primary)] hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                       >
                         {CONTACT_INFO.email}
                       </a>
                     </div>
                   </div>
                   <button
+                    type="button"
                     onClick={handleCopyEmail}
-                    className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white transition-colors"
+                    className="p-2 rounded-lg bg-[var(--surface-card)] hover:bg-[var(--surface-section)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors border border-[var(--border)]"
                     title="Copy email address"
                   >
                     {copiedEmail ? (
-                      <Check className="w-4 h-4 text-emerald-400" />
+                      <Check className="w-4 h-4 text-emerald-500" />
                     ) : (
                       <Copy className="w-4 h-4" />
                     )}
@@ -152,22 +153,22 @@ export function ContactSection() {
                   href={CONTACT_INFO.telegramHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-4 rounded-xl bg-black/40 dark:bg-black/40 light:bg-zinc-50 border border-white/5 hover:border-blue-500/40 transition-all flex items-center justify-between group"
+                  className="p-4 rounded-xl bg-[var(--surface-elevated)] border border-[var(--border)] hover:border-blue-500/50 transition-all flex items-center justify-between group"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="p-2.5 rounded-lg bg-sky-600/20 text-sky-400 border border-sky-500/30">
+                    <div className="p-2.5 rounded-lg bg-sky-600/15 text-sky-600 dark:text-sky-400 border border-sky-500/30">
                       <TelegramIcon className="w-4 h-4" />
                     </div>
                     <div>
-                      <span className="text-xs font-mono text-zinc-400 uppercase block">
+                      <span className="text-xs font-mono text-[var(--text-muted)] uppercase block">
                         Telegram Messaging
                       </span>
-                      <span className="text-sm font-bold text-white dark:text-white light:text-zinc-900 group-hover:text-sky-400 transition-colors">
+                      <span className="text-sm font-bold text-[var(--text-primary)] group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
                         {CONTACT_INFO.telegramHandle}
                       </span>
                     </div>
                   </div>
-                  <ArrowRight className="w-4 h-4 text-zinc-500 group-hover:translate-x-1 group-hover:text-white transition-all" />
+                  <ArrowRight className="w-4 h-4 text-[var(--text-muted)] group-hover:translate-x-1 group-hover:text-[var(--text-primary)] transition-all" />
                 </a>
 
                 {/* Instagram Direct */}
@@ -175,22 +176,22 @@ export function ContactSection() {
                   href={CONTACT_INFO.instagramHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-4 rounded-xl bg-black/40 dark:bg-black/40 light:bg-zinc-50 border border-white/5 hover:border-pink-500/40 transition-all flex items-center justify-between group"
+                  className="p-4 rounded-xl bg-[var(--surface-elevated)] border border-[var(--border)] hover:border-pink-500/50 transition-all flex items-center justify-between group"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="p-2.5 rounded-lg bg-pink-600/20 text-pink-400 border border-pink-500/30">
+                    <div className="p-2.5 rounded-lg bg-pink-600/15 text-pink-600 dark:text-pink-400 border border-pink-500/30">
                       <InstagramIcon className="w-4 h-4" />
                     </div>
                     <div>
-                      <span className="text-xs font-mono text-zinc-400 uppercase block">
+                      <span className="text-xs font-mono text-[var(--text-muted)] uppercase block">
                         Instagram DM
                       </span>
-                      <span className="text-sm font-bold text-white dark:text-white light:text-zinc-900 group-hover:text-pink-400 transition-colors">
+                      <span className="text-sm font-bold text-[var(--text-primary)] group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors">
                         {CONTACT_INFO.instagramHandle}
                       </span>
                     </div>
                   </div>
-                  <ArrowRight className="w-4 h-4 text-zinc-500 group-hover:translate-x-1 group-hover:text-white transition-all" />
+                  <ArrowRight className="w-4 h-4 text-[var(--text-muted)] group-hover:translate-x-1 group-hover:text-[var(--text-primary)] transition-all" />
                 </a>
 
                 {/* GitHub Direct */}
@@ -198,22 +199,22 @@ export function ContactSection() {
                   href={CONTACT_INFO.githubHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-4 rounded-xl bg-black/40 dark:bg-black/40 light:bg-zinc-50 border border-white/5 hover:border-zinc-400/40 transition-all flex items-center justify-between group"
+                  className="p-4 rounded-xl bg-[var(--surface-elevated)] border border-[var(--border)] hover:border-zinc-400/50 transition-all flex items-center justify-between group"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="p-2.5 rounded-lg bg-zinc-800 text-zinc-300 border border-white/10">
+                    <div className="p-2.5 rounded-lg bg-[var(--surface-card)] text-[var(--text-secondary)] border border-[var(--border)]">
                       <GitHubIcon className="w-4 h-4" />
                     </div>
                     <div>
-                      <span className="text-xs font-mono text-zinc-400 uppercase block">
+                      <span className="text-xs font-mono text-[var(--text-muted)] uppercase block">
                         GitHub Profile
                       </span>
-                      <span className="text-sm font-bold text-white dark:text-white light:text-zinc-900 group-hover:text-zinc-300 transition-colors">
+                      <span className="text-sm font-bold text-[var(--text-primary)] group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                         github.com/{CONTACT_INFO.githubHandle}
                       </span>
                     </div>
                   </div>
-                  <ArrowRight className="w-4 h-4 text-zinc-500 group-hover:translate-x-1 group-hover:text-white transition-all" />
+                  <ArrowRight className="w-4 h-4 text-[var(--text-muted)] group-hover:translate-x-1 group-hover:text-[var(--text-primary)] transition-all" />
                 </a>
 
                 {/* LinkedIn Direct */}
@@ -221,33 +222,33 @@ export function ContactSection() {
                   href={CONTACT_INFO.linkedinHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-4 rounded-xl bg-black/40 dark:bg-black/40 light:bg-zinc-50 border border-white/5 hover:border-blue-600/40 transition-all flex items-center justify-between group"
+                  className="p-4 rounded-xl bg-[var(--surface-elevated)] border border-[var(--border)] hover:border-blue-600/50 transition-all flex items-center justify-between group"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="p-2.5 rounded-lg bg-blue-700/20 text-blue-400 border border-blue-600/30">
+                    <div className="p-2.5 rounded-lg bg-blue-600/15 text-blue-600 dark:text-blue-400 border border-blue-500/30">
                       <LinkedInIcon className="w-4 h-4" />
                     </div>
                     <div>
-                      <span className="text-xs font-mono text-zinc-400 uppercase block">
+                      <span className="text-xs font-mono text-[var(--text-muted)] uppercase block">
                         LinkedIn (Verified)
                       </span>
-                      <span className="text-sm font-bold text-white dark:text-white light:text-zinc-900 group-hover:text-blue-400 transition-colors">
+                      <span className="text-sm font-bold text-[var(--text-primary)] group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                         linkedin.com/in/{CONTACT_INFO.linkedinHandle}
                       </span>
                     </div>
                   </div>
-                  <ArrowRight className="w-4 h-4 text-zinc-500 group-hover:translate-x-1 group-hover:text-white transition-all" />
+                  <ArrowRight className="w-4 h-4 text-[var(--text-muted)] group-hover:translate-x-1 group-hover:text-[var(--text-primary)] transition-all" />
                 </a>
               </div>
             </div>
 
             {/* Direct Scope Guarantee Note */}
-            <div className="p-5 rounded-2xl bg-zinc-900/30 border border-white/5 font-mono text-xs text-zinc-400 space-y-2">
-              <div className="flex items-center gap-2 text-white">
-                <CheckCircle2 className="w-4 h-4 text-blue-400" />
+            <div className="p-5 rounded-2xl bg-[var(--surface-card)] border border-[var(--border)] font-mono text-xs text-[var(--text-secondary)] space-y-2 shadow-sm">
+              <div className="flex items-center gap-2 text-[var(--text-primary)]">
+                <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-blue-400" />
                 <span className="font-bold">Personal Response Within 24h</span>
               </div>
-              <p className="text-zinc-400 leading-relaxed">
+              <p className="text-[var(--text-secondary)] leading-relaxed">
                 No middle managers or generic sales reps. You speak directly with Samuel Tafese from the first conversation to final delivery.
               </p>
             </div>
@@ -255,27 +256,28 @@ export function ContactSection() {
 
           {/* Right Column: Full Scoping Form */}
           <div className="lg:col-span-7">
-            <div className="p-6 sm:p-10 rounded-2xl bg-zinc-900/80 dark:bg-zinc-900/80 light:bg-white border border-white/10 dark:border-white/10 light:border-black/5 shadow-2xl">
+            <div className="p-6 sm:p-10 rounded-2xl bg-[var(--surface-card)] border border-[var(--border)] shadow-xl">
               {status === "success" ? (
                 <div className="text-center py-12 space-y-6">
-                  <div className="w-16 h-16 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center mx-auto">
+                  <div className="w-16 h-16 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto">
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
 
                   <div>
-                    <span className="text-xs font-mono uppercase tracking-widest text-emerald-400 block mb-1">
+                    <span className="text-xs font-mono uppercase tracking-widest text-emerald-600 dark:text-emerald-400 block mb-1 font-semibold">
                       INQUIRY LOGGED // {inquiryId}
                     </span>
-                    <h3 className="text-2xl sm:text-3xl font-black text-white dark:text-white light:text-zinc-900 uppercase">
+                    <h3 className="text-2xl sm:text-3xl font-black text-[var(--text-primary)] uppercase">
                       Inquiry Received Successfully
                     </h3>
-                    <p className="text-sm text-zinc-300 dark:text-zinc-300 light:text-zinc-600 mt-2 max-w-md mx-auto leading-relaxed">
+                    <p className="text-sm text-[var(--text-secondary)] mt-2 max-w-md mx-auto leading-relaxed font-normal">
                       Thank you for reaching out. Samuel Tafese is reviewing your requirements and will reply via email ({formData.email}) within 24 hours.
                     </p>
                   </div>
 
                   <div className="pt-4 flex flex-wrap justify-center gap-4">
                     <button
+                      type="button"
                       onClick={() => {
                         setStatus("idle");
                         setFormData({
@@ -289,7 +291,7 @@ export function ContactSection() {
                           honeyPot: "",
                         });
                       }}
-                      className="px-6 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-mono uppercase tracking-wider transition-colors"
+                      className="px-6 py-2.5 rounded-full bg-[var(--surface-elevated)] hover:bg-[var(--surface-section)] text-[var(--text-primary)] text-xs font-mono uppercase tracking-wider transition-colors border border-[var(--border)]"
                     >
                       Send Another Brief
                     </button>
@@ -307,7 +309,7 @@ export function ContactSection() {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   {/* Error Notification */}
                   {status === "error" && (
-                    <div className="p-4 rounded-xl bg-red-950/40 border border-red-500/40 flex items-center gap-3 text-red-300 text-sm">
+                    <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/40 flex items-center gap-3 text-red-600 dark:text-red-400 text-sm">
                       <AlertCircle className="w-5 h-5 shrink-0" />
                       <span>{errorMessage}</span>
                     </div>
@@ -332,7 +334,7 @@ export function ContactSection() {
                     <div className="space-y-2">
                       <label
                         htmlFor="fullName"
-                        className="text-xs font-mono uppercase tracking-wider text-zinc-300 dark:text-zinc-300 light:text-zinc-700 block font-semibold"
+                        className="text-xs font-mono uppercase tracking-wider text-[var(--text-primary)] block font-semibold"
                       >
                         Full Name <span className="text-orange-500">*</span>
                       </label>
@@ -345,14 +347,14 @@ export function ContactSection() {
                         onChange={(e) =>
                           setFormData({ ...formData, fullName: e.target.value })
                         }
-                        className="w-full px-4 py-3 rounded-xl bg-black/50 dark:bg-black/50 light:bg-zinc-100 border border-white/10 dark:border-white/10 light:border-black/10 text-white dark:text-white light:text-zinc-900 placeholder:text-zinc-600 focus:outline-none focus:border-blue-500 text-sm transition-colors"
+                        className="w-full px-4 py-3 rounded-xl bg-[var(--input-bg)] border border-[var(--border)] text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-sm transition-colors shadow-sm"
                       />
                     </div>
 
                     <div className="space-y-2">
                       <label
                         htmlFor="email"
-                        className="text-xs font-mono uppercase tracking-wider text-zinc-300 dark:text-zinc-300 light:text-zinc-700 block font-semibold"
+                        className="text-xs font-mono uppercase tracking-wider text-[var(--text-primary)] block font-semibold"
                       >
                         Email Address <span className="text-orange-500">*</span>
                       </label>
@@ -365,7 +367,7 @@ export function ContactSection() {
                         onChange={(e) =>
                           setFormData({ ...formData, email: e.target.value })
                         }
-                        className="w-full px-4 py-3 rounded-xl bg-black/50 dark:bg-black/50 light:bg-zinc-100 border border-white/10 dark:border-white/10 light:border-black/10 text-white dark:text-white light:text-zinc-900 placeholder:text-zinc-600 focus:outline-none focus:border-blue-500 text-sm transition-colors"
+                        className="w-full px-4 py-3 rounded-xl bg-[var(--input-bg)] border border-[var(--border)] text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-sm transition-colors shadow-sm"
                       />
                     </div>
                   </div>
@@ -375,7 +377,7 @@ export function ContactSection() {
                     <div className="space-y-2">
                       <label
                         htmlFor="businessName"
-                        className="text-xs font-mono uppercase tracking-wider text-zinc-300 dark:text-zinc-300 light:text-zinc-700 block font-semibold"
+                        className="text-xs font-mono uppercase tracking-wider text-[var(--text-primary)] block font-semibold"
                       >
                         Business / Brand Name
                       </label>
@@ -390,14 +392,14 @@ export function ContactSection() {
                             businessName: e.target.value,
                           })
                         }
-                        className="w-full px-4 py-3 rounded-xl bg-black/50 dark:bg-black/50 light:bg-zinc-100 border border-white/10 dark:border-white/10 light:border-black/10 text-white dark:text-white light:text-zinc-900 placeholder:text-zinc-600 focus:outline-none focus:border-blue-500 text-sm transition-colors"
+                        className="w-full px-4 py-3 rounded-xl bg-[var(--input-bg)] border border-[var(--border)] text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-sm transition-colors shadow-sm"
                       />
                     </div>
 
                     <div className="space-y-2">
                       <label
                         htmlFor="service"
-                        className="text-xs font-mono uppercase tracking-wider text-zinc-300 dark:text-zinc-300 light:text-zinc-700 block font-semibold"
+                        className="text-xs font-mono uppercase tracking-wider text-[var(--text-primary)] block font-semibold"
                       >
                         Service Required <span className="text-orange-500">*</span>
                       </label>
@@ -408,7 +410,7 @@ export function ContactSection() {
                         onChange={(e) =>
                           setFormData({ ...formData, service: e.target.value })
                         }
-                        className="w-full px-4 py-3 rounded-xl bg-black/50 dark:bg-black/50 light:bg-zinc-100 border border-white/10 dark:border-white/10 light:border-black/10 text-white dark:text-white light:text-zinc-900 focus:outline-none focus:border-blue-500 text-sm transition-colors"
+                        className="w-full px-4 py-3 rounded-xl bg-[var(--input-bg)] border border-[var(--border)] text-[var(--text-primary)] focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-sm transition-colors shadow-sm"
                       >
                         <option value="Web Development">01 Web Development</option>
                         <option value="Video Editing">02 Video Editing</option>
@@ -426,7 +428,7 @@ export function ContactSection() {
                     <div className="space-y-2">
                       <label
                         htmlFor="budget"
-                        className="text-xs font-mono uppercase tracking-wider text-zinc-300 dark:text-zinc-300 light:text-zinc-700 block font-semibold"
+                        className="text-xs font-mono uppercase tracking-wider text-[var(--text-primary)] block font-semibold"
                       >
                         Estimated Budget
                       </label>
@@ -436,7 +438,7 @@ export function ContactSection() {
                         onChange={(e) =>
                           setFormData({ ...formData, budget: e.target.value })
                         }
-                        className="w-full px-4 py-3 rounded-xl bg-black/50 dark:bg-black/50 light:bg-zinc-100 border border-white/10 dark:border-white/10 light:border-black/10 text-white dark:text-white light:text-zinc-900 focus:outline-none focus:border-blue-500 text-sm transition-colors"
+                        className="w-full px-4 py-3 rounded-xl bg-[var(--input-bg)] border border-[var(--border)] text-[var(--text-primary)] focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-sm transition-colors shadow-sm"
                       >
                         <option value="$1,500 - $3,000">$1,500 – $3,000</option>
                         <option value="$3,000 - $5,000">$3,000 – $5,000</option>
@@ -448,7 +450,7 @@ export function ContactSection() {
                     <div className="space-y-2">
                       <label
                         htmlFor="timeline"
-                        className="text-xs font-mono uppercase tracking-wider text-zinc-300 dark:text-zinc-300 light:text-zinc-700 block font-semibold"
+                        className="text-xs font-mono uppercase tracking-wider text-[var(--text-primary)] block font-semibold"
                       >
                         Target Timeline
                       </label>
@@ -458,7 +460,7 @@ export function ContactSection() {
                         onChange={(e) =>
                           setFormData({ ...formData, timeline: e.target.value })
                         }
-                        className="w-full px-4 py-3 rounded-xl bg-black/50 dark:bg-black/50 light:bg-zinc-100 border border-white/10 dark:border-white/10 light:border-black/10 text-white dark:text-white light:text-zinc-900 focus:outline-none focus:border-blue-500 text-sm transition-colors"
+                        className="w-full px-4 py-3 rounded-xl bg-[var(--input-bg)] border border-[var(--border)] text-[var(--text-primary)] focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-sm transition-colors shadow-sm"
                       >
                         <option value="Urgent (< 3 Weeks)">Urgent (&lt; 3 Weeks)</option>
                         <option value="1 - 2 Months">1 – 2 Months (Standard)</option>
@@ -472,7 +474,7 @@ export function ContactSection() {
                   <div className="space-y-2">
                     <label
                       htmlFor="projectDescription"
-                      className="text-xs font-mono uppercase tracking-wider text-zinc-300 dark:text-zinc-300 light:text-zinc-700 block font-semibold"
+                      className="text-xs font-mono uppercase tracking-wider text-[var(--text-primary)] block font-semibold"
                     >
                       Project Description <span className="text-orange-500">*</span>
                     </label>
@@ -488,7 +490,7 @@ export function ContactSection() {
                           projectDescription: e.target.value,
                         })
                       }
-                      className="w-full px-4 py-3 rounded-xl bg-black/50 dark:bg-black/50 light:bg-zinc-100 border border-white/10 dark:border-white/10 light:border-black/10 text-white dark:text-white light:text-zinc-900 placeholder:text-zinc-600 focus:outline-none focus:border-blue-500 text-sm transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-[var(--input-bg)] border border-[var(--border)] text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-sm transition-colors shadow-sm"
                     />
                   </div>
 
@@ -496,7 +498,7 @@ export function ContactSection() {
                   <button
                     type="submit"
                     disabled={status === "loading"}
-                    className="w-full py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm tracking-wider uppercase shadow-xl shadow-blue-600/30 border border-blue-400/40 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.01]"
+                    className="w-full py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm tracking-wider uppercase shadow-xl shadow-blue-600/30 border border-blue-400/40 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.01] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
                   >
                     {status === "loading" ? (
                       <>

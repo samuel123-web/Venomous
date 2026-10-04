@@ -13,7 +13,7 @@ export function HeroSection() {
   const [activeTab, setActiveTab] = useState<HeroTab>("code");
 
   return (
-    <section className="relative min-h-[92vh] flex items-center justify-center pt-28 pb-16 overflow-hidden bg-grid-pattern">
+    <section className="relative min-h-[92vh] flex items-center justify-center pt-28 pb-16 overflow-hidden bg-grid-pattern transition-colors duration-250">
       {/* Ambient background glows & serpent motif */}
       <VenomousMotif variant="glow" className="top-10 left-1/4" />
       <VenomousMotif variant="path" className="inset-0 pointer-events-none" />
@@ -27,9 +27,9 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 text-xs font-mono tracking-widest uppercase mb-6"
+              className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs font-mono tracking-widest uppercase mb-6 font-semibold"
             >
-              <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-500 animate-pulse" />
               <span>VENOMOUS / DIGITAL CREATIVE STUDIO</span>
             </motion.div>
 
@@ -38,10 +38,10 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-              className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-black tracking-tight leading-[1.05] text-white dark:text-white light:text-zinc-950 mb-6 uppercase"
+              className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-black tracking-tight leading-[1.05] text-[var(--text-primary)] mb-6 uppercase"
             >
               We Build Digital Experiences That Make Businesses{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-indigo-400 to-orange-400">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-500 to-orange-500 dark:from-blue-400 dark:via-indigo-300 dark:to-orange-400">
                 Stand Out.
               </span>
             </motion.h1>
@@ -51,7 +51,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-              className="text-lg sm:text-xl text-zinc-400 dark:text-zinc-400 light:text-zinc-600 max-w-2xl leading-relaxed mb-8"
+              className="text-lg sm:text-xl text-[var(--text-secondary)] max-w-2xl leading-relaxed mb-8 font-normal"
             >
               Web development, video editing, and graphic design — combined to help businesses build a stronger digital presence.
             </motion.p>
@@ -65,7 +65,7 @@ export function HeroSection() {
             >
               <Link
                 href="/#contact"
-                className="group relative inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm tracking-wide shadow-xl shadow-blue-600/30 border border-blue-400/40 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                className="group relative inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm tracking-wide shadow-xl shadow-blue-600/30 border border-blue-400/40 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
               >
                 <span>Start a Project</span>
                 <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
@@ -73,30 +73,30 @@ export function HeroSection() {
 
               <Link
                 href="/#work"
-                className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-white/5 dark:bg-zinc-900/80 light:bg-zinc-100 hover:bg-white/10 dark:hover:bg-zinc-800 text-zinc-300 dark:text-zinc-200 light:text-zinc-800 font-semibold text-sm tracking-wide border border-white/10 dark:border-white/10 light:border-black/10 transition-all duration-300 hover:scale-[1.02]"
+                className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-[var(--surface-elevated)] hover:bg-[var(--surface-card)] text-[var(--text-primary)] font-semibold text-sm tracking-wide border border-[var(--border)] transition-all duration-300 hover:scale-[1.02] shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
               >
                 <span>View My Work</span>
               </Link>
             </motion.div>
 
-            {/* Micro Trust Indicator */}
+            {/* Micro Trust Indicators */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="mt-10 flex flex-wrap items-center gap-6 text-xs text-zinc-400 dark:text-zinc-500 font-mono"
+              className="mt-10 flex flex-wrap items-center gap-6 text-xs text-[var(--text-muted)] font-mono"
             >
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-blue-500" />
-                <span>By Samuel Tafese</span>
+                <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-blue-500" />
+                <span className="text-[var(--text-secondary)] font-medium">By Samuel Tafese</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-orange-400" />
-                <span>Bespoke Engineering & Cinema</span>
+                <CheckCircle2 className="w-4 h-4 text-orange-500 dark:text-orange-400" />
+                <span className="text-[var(--text-secondary)] font-medium">Bespoke Engineering &amp; Cinema</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                <span>Zero Templates</span>
+                <CheckCircle2 className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
+                <span className="text-[var(--text-secondary)] font-medium">Zero Templates</span>
               </div>
             </motion.div>
           </div>
@@ -109,17 +109,17 @@ export function HeroSection() {
             className="lg:col-span-5 relative"
           >
             {/* Ambient Backing Glow */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/30 via-indigo-600/20 to-orange-500/30 rounded-3xl blur-2xl opacity-60" />
+            <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/25 via-indigo-600/15 to-orange-500/25 rounded-3xl blur-2xl opacity-60 pointer-events-none" />
 
             {/* Main Interactive Studio Console Container */}
-            <div className="relative rounded-2xl bg-[#121214] border border-white/10 shadow-2xl overflow-hidden backdrop-blur-xl">
+            <div className="relative rounded-2xl bg-[var(--surface-card)] border border-[var(--border)] shadow-xl overflow-hidden backdrop-blur-xl">
               {/* Window Header Bar */}
-              <div className="flex items-center justify-between px-4 py-3 border-b border-white/10 bg-zinc-950/70">
+              <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border)] bg-[var(--surface-elevated)]">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full bg-red-500/80" />
                   <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
                   <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
-                  <span className="text-[11px] font-mono text-zinc-400 ml-2">
+                  <span className="text-[11px] font-mono text-[var(--text-muted)] ml-2">
                     venomous-engine // v2.6
                   </span>
                 </div>
@@ -132,20 +132,21 @@ export function HeroSection() {
                       className="object-contain"
                     />
                   </div>
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-zinc-400">
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-[var(--text-secondary)] font-bold">
                     STUDIO
                   </span>
                 </div>
               </div>
 
               {/* Composition Pillar Tabs (CODE + VIDEO + DESIGN) */}
-              <div className="grid grid-cols-3 border-b border-white/10 bg-zinc-900/60 p-1 gap-1">
+              <div className="grid grid-cols-3 border-b border-[var(--border)] bg-[var(--surface-section)] p-1 gap-1">
                 <button
+                  type="button"
                   onClick={() => setActiveTab("code")}
                   className={`flex items-center justify-center gap-2 py-2 px-3 rounded-lg text-xs font-mono transition-all duration-200 ${
                     activeTab === "code"
                       ? "bg-blue-600 text-white shadow-md font-semibold"
-                      : "text-zinc-400 hover:text-white hover:bg-white/5"
+                      : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-black/5 dark:hover:bg-white/5"
                   }`}
                 >
                   <Code2 className="w-3.5 h-3.5" />
@@ -153,11 +154,12 @@ export function HeroSection() {
                 </button>
 
                 <button
+                  type="button"
                   onClick={() => setActiveTab("video")}
                   className={`flex items-center justify-center gap-2 py-2 px-3 rounded-lg text-xs font-mono transition-all duration-200 ${
                     activeTab === "video"
                       ? "bg-orange-600 text-white shadow-md font-semibold"
-                      : "text-zinc-400 hover:text-white hover:bg-white/5"
+                      : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-black/5 dark:hover:bg-white/5"
                   }`}
                 >
                   <Film className="w-3.5 h-3.5" />
@@ -165,11 +167,12 @@ export function HeroSection() {
                 </button>
 
                 <button
+                  type="button"
                   onClick={() => setActiveTab("design")}
                   className={`flex items-center justify-center gap-2 py-2 px-3 rounded-lg text-xs font-mono transition-all duration-200 ${
                     activeTab === "design"
                       ? "bg-indigo-600 text-white shadow-md font-semibold"
-                      : "text-zinc-400 hover:text-white hover:bg-white/5"
+                      : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-black/5 dark:hover:bg-white/5"
                   }`}
                 >
                   <Layers className="w-3.5 h-3.5" />
@@ -178,7 +181,7 @@ export function HeroSection() {
               </div>
 
               {/* Dynamic Pillar Preview Canvas */}
-              <div className="p-5 min-h-[340px] flex flex-col justify-between">
+              <div className="p-5 min-h-[340px] flex flex-col justify-between bg-zinc-950 text-zinc-100 rounded-b-2xl">
                 {activeTab === "code" && (
                   <motion.div
                     key="tab-code"
@@ -188,7 +191,7 @@ export function HeroSection() {
                     className="space-y-3 font-mono text-xs"
                   >
                     <div className="flex items-center justify-between text-[11px] text-zinc-500 border-b border-white/5 pb-2">
-                      <span className="text-blue-400 flex items-center gap-1.5">
+                      <span className="text-blue-400 flex items-center gap-1.5 font-semibold">
                         <Terminal className="w-3 h-3" /> App.tsx (Next.js 16 • React 19)
                       </span>
                       <span>TypeScript Strict</span>
@@ -237,7 +240,7 @@ export function HeroSection() {
 
                     {/* Console Output Bar */}
                     <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-zinc-400 bg-black/40 p-2.5 rounded-lg">
-                      <span className="text-emerald-400 flex items-center gap-1.5">
+                      <span className="text-emerald-400 flex items-center gap-1.5 font-medium">
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
                         Compiled in 0.4s • Zero runtime errors
                       </span>
@@ -309,7 +312,6 @@ export function HeroSection() {
                     className="space-y-3"
                   >
                     <div className="relative aspect-video rounded-lg overflow-hidden bg-[#0A0A0C] border border-white/10 p-4 flex flex-col justify-between">
-                      {/* Geometric Blueprint Overlay */}
                       <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none" />
 
                       <div className="flex items-center justify-between relative z-10">
@@ -334,7 +336,7 @@ export function HeroSection() {
 
                       <div className="flex items-center justify-between relative z-10 pt-2 border-t border-white/5">
                         <div className="flex items-center gap-2">
-                          <div className="w-4 h-4 rounded-full bg-[#0B0B0B] border border-white/30" title="#0B0B0B" />
+                          <div className="w-4 h-4 rounded-full bg-[#090909] border border-white/30" title="#090909" />
                           <div className="w-4 h-4 rounded-full bg-[#2563EB]" title="#2563EB" />
                           <div className="w-4 h-4 rounded-full bg-[#F97316]" title="#F97316" />
                           <div className="w-4 h-4 rounded-full bg-[#FFFFFF]" title="#FFFFFF" />

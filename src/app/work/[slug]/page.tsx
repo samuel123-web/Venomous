@@ -69,20 +69,17 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
   const nextProject =
     projectIndex < PROJECTS.length - 1 ? PROJECTS[projectIndex + 1] : PROJECTS[0];
 
-  const isWeb = project.category === "web";
-  const isVideo = project.category === "video";
-
   return (
     <>
       <Navbar />
 
-      <main className="flex-1 w-full pt-28 pb-24 bg-[#0B0B0B] dark:bg-[#0B0B0B] light:bg-[#F8F9FA] text-white selection:bg-blue-600 selection:text-white">
+      <main className="flex-1 w-full pt-28 pb-24 bg-[var(--background)] text-[var(--text-primary)] selection:bg-blue-600 selection:text-white transition-colors duration-250">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Back link */}
           <div className="mb-8">
             <Link
               href="/#work"
-              className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-zinc-400 hover:text-white transition-colors"
+              className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Back To Selected Work</span>
@@ -92,30 +89,30 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
           {/* Hero Header */}
           <div className="mb-12 space-y-4">
             <div className="flex flex-wrap items-center gap-3">
-              <span className="px-3.5 py-1 rounded-full text-xs font-mono uppercase tracking-wider bg-blue-600/20 text-blue-400 border border-blue-500/30 font-bold">
+              <span className="px-3.5 py-1 rounded-full text-xs font-mono uppercase tracking-wider bg-blue-600/15 text-blue-600 dark:text-blue-400 border border-blue-500/30 font-bold">
                 {project.categoryLabel}
               </span>
-              <span className="text-xs font-mono text-zinc-500 flex items-center gap-1.5">
+              <span className="text-xs font-mono text-[var(--text-muted)] flex items-center gap-1.5 font-medium">
                 <Building className="w-3.5 h-3.5" />
                 {project.industry}
               </span>
-              <span className="text-xs font-mono text-zinc-500 flex items-center gap-1.5">
+              <span className="text-xs font-mono text-[var(--text-muted)] flex items-center gap-1.5 font-medium">
                 <Calendar className="w-3.5 h-3.5" />
                 {project.year}
               </span>
             </div>
 
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tight text-white dark:text-white light:text-zinc-950 leading-[1.05]">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tight text-[var(--text-primary)] leading-[1.05]">
               {project.title}
             </h1>
 
-            <p className="text-lg sm:text-2xl text-zinc-300 dark:text-zinc-300 light:text-zinc-700 max-w-4xl font-light leading-relaxed">
+            <p className="text-lg sm:text-2xl text-[var(--text-secondary)] max-w-4xl font-light leading-relaxed">
               {project.summary}
             </p>
           </div>
 
           {/* Master Visual Canvas */}
-          <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden bg-black border border-white/10 mb-16 shadow-2xl">
+          <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden bg-black border border-[var(--border)] mb-16 shadow-2xl">
             <Image
               src={project.heroImage}
               alt={project.title}
@@ -123,7 +120,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
               priority
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
 
             <div className="absolute bottom-6 left-6 right-6 flex flex-wrap items-center justify-between gap-4">
               <div className="text-xs font-mono text-zinc-300 bg-black/60 px-3 py-1.5 rounded-lg border border-white/10 backdrop-blur-md">
@@ -145,22 +142,22 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
           </div>
 
           {/* Project Details Spec Strip */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-6 rounded-2xl bg-zinc-900/60 border border-white/10 mb-20 text-xs font-mono">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-6 rounded-2xl bg-[var(--surface-card)] border border-[var(--border)] mb-20 text-xs font-mono shadow-sm">
             <div>
-              <span className="text-zinc-500 uppercase block mb-1">Services</span>
-              <p className="text-zinc-200 font-semibold">{project.services.slice(0, 2).join(", ")}</p>
+              <span className="text-[var(--text-muted)] uppercase block mb-1">Services</span>
+              <p className="text-[var(--text-primary)] font-semibold">{project.services.slice(0, 2).join(", ")}</p>
             </div>
             <div>
-              <span className="text-zinc-500 uppercase block mb-1">Stack / Tools</span>
-              <p className="text-zinc-200 font-semibold">{project.technologies.slice(0, 3).join(", ")}</p>
+              <span className="text-[var(--text-muted)] uppercase block mb-1">Stack / Tools</span>
+              <p className="text-[var(--text-primary)] font-semibold">{project.technologies.slice(0, 3).join(", ")}</p>
             </div>
             <div>
-              <span className="text-zinc-500 uppercase block mb-1">Timeline &amp; Year</span>
-              <p className="text-zinc-200 font-semibold">Q4 {project.year} • 4-Week Sprint</p>
+              <span className="text-[var(--text-muted)] uppercase block mb-1">Timeline &amp; Year</span>
+              <p className="text-[var(--text-primary)] font-semibold">Q4 {project.year} • 4-Week Sprint</p>
             </div>
             <div>
-              <span className="text-zinc-500 uppercase block mb-1">Lead Creative</span>
-              <p className="text-blue-400 font-bold">Samuel Tafese</p>
+              <span className="text-[var(--text-muted)] uppercase block mb-1">Lead Creative</span>
+              <p className="text-blue-600 dark:text-blue-400 font-bold">Samuel Tafese</p>
             </div>
           </div>
 
@@ -168,8 +165,8 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-20">
             {/* Sticky Table of Contents */}
             <div className="lg:col-span-4 lg:sticky lg:top-28 space-y-6">
-              <div className="p-6 rounded-2xl bg-zinc-900/50 border border-white/10 space-y-4">
-                <span className="text-xs font-mono uppercase tracking-widest text-zinc-400 block font-semibold">
+              <div className="p-6 rounded-2xl bg-[var(--surface-card)] border border-[var(--border)] space-y-4 shadow-sm">
+                <span className="text-xs font-mono uppercase tracking-widest text-[var(--text-muted)] block font-semibold">
                   CASE STUDY CHAPTERS
                 </span>
                 <nav className="space-y-2 text-xs font-mono">
@@ -178,7 +175,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                       <a
                         key={sec}
                         href={`#${sec.toLowerCase()}`}
-                        className="block py-1 text-zinc-400 hover:text-white transition-colors"
+                        className="block py-1 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
                       >
                         • {sec}
                       </a>
@@ -188,16 +185,16 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
               </div>
 
               {/* Inquiry Action Box */}
-              <div className="p-6 rounded-2xl bg-blue-950/20 border border-blue-500/20 space-y-3">
-                <span className="text-xs font-mono uppercase tracking-widest text-blue-400 font-semibold block">
+              <div className="p-6 rounded-2xl bg-blue-500/10 border border-blue-500/20 space-y-3 shadow-sm">
+                <span className="text-xs font-mono uppercase tracking-widest text-blue-600 dark:text-blue-400 font-semibold block">
                   Need a similar outcome?
                 </span>
-                <p className="text-xs text-zinc-300 leading-relaxed">
+                <p className="text-xs text-[var(--text-primary)] leading-relaxed font-normal">
                   Let&apos;s engineer a high-conversion digital presence for your brand.
                 </p>
                 <Link
                   href={`/#contact?project=${encodeURIComponent(project.title)}`}
-                  className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-blue-400 hover:text-blue-300 pt-1"
+                  className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 hover:underline pt-1"
                 >
                   <span>Start A Project Inquiry →</span>
                 </Link>
@@ -208,109 +205,109 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
             <div className="lg:col-span-8 space-y-14">
               {/* 01: Overview */}
               <section id="overview" className="space-y-4 pt-2">
-                <div className="flex items-center gap-2 text-xs font-mono text-blue-400 uppercase tracking-widest">
+                <div className="flex items-center gap-2 text-xs font-mono text-blue-600 dark:text-blue-400 uppercase tracking-widest font-semibold">
                   <span>01</span>
                   <span>// OVERVIEW</span>
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-black uppercase text-white tracking-tight">
+                <h2 className="text-2xl sm:text-3xl font-black uppercase text-[var(--text-primary)] tracking-tight">
                   Project Summary
                 </h2>
-                <p className="text-base text-zinc-300 leading-relaxed font-light">
+                <p className="text-base text-[var(--text-secondary)] leading-relaxed font-light">
                   {project.overview}
                 </p>
               </section>
 
               {/* 02: Challenge */}
-              <section id="challenge" className="space-y-4 pt-6 border-t border-white/10">
-                <div className="flex items-center gap-2 text-xs font-mono text-red-400 uppercase tracking-widest">
+              <section id="challenge" className="space-y-4 pt-6 border-t border-[var(--border)]">
+                <div className="flex items-center gap-2 text-xs font-mono text-red-600 dark:text-red-400 uppercase tracking-widest font-semibold">
                   <span>02</span>
                   <span>// CHALLENGE</span>
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-black uppercase text-white tracking-tight">
+                <h2 className="text-2xl sm:text-3xl font-black uppercase text-[var(--text-primary)] tracking-tight">
                   The Problem Being Solved
                 </h2>
-                <p className="text-base text-zinc-300 leading-relaxed font-light">
+                <p className="text-base text-[var(--text-secondary)] leading-relaxed font-light">
                   {project.challenge}
                 </p>
               </section>
 
               {/* 03: Strategy */}
-              <section id="strategy" className="space-y-4 pt-6 border-t border-white/10">
-                <div className="flex items-center gap-2 text-xs font-mono text-orange-400 uppercase tracking-widest">
+              <section id="strategy" className="space-y-4 pt-6 border-t border-[var(--border)]">
+                <div className="flex items-center gap-2 text-xs font-mono text-orange-500 dark:text-orange-400 uppercase tracking-widest font-semibold">
                   <span>03</span>
                   <span>// STRATEGY</span>
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-black uppercase text-white tracking-tight">
+                <h2 className="text-2xl sm:text-3xl font-black uppercase text-[var(--text-primary)] tracking-tight">
                   Creative &amp; Technical Approach
                 </h2>
-                <p className="text-base text-zinc-300 leading-relaxed font-light">
+                <p className="text-base text-[var(--text-secondary)] leading-relaxed font-light">
                   {project.strategy}
                 </p>
               </section>
 
               {/* 04: Design */}
-              <section id="design" className="space-y-4 pt-6 border-t border-white/10">
-                <div className="flex items-center gap-2 text-xs font-mono text-indigo-400 uppercase tracking-widest">
+              <section id="design" className="space-y-4 pt-6 border-t border-[var(--border)]">
+                <div className="flex items-center gap-2 text-xs font-mono text-indigo-600 dark:text-indigo-400 uppercase tracking-widest font-semibold">
                   <span>04</span>
                   <span>// DESIGN</span>
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-black uppercase text-white tracking-tight">
+                <h2 className="text-2xl sm:text-3xl font-black uppercase text-[var(--text-primary)] tracking-tight">
                   Visual &amp; Aesthetic Decisions
                 </h2>
-                <p className="text-base text-zinc-300 leading-relaxed font-light">
+                <p className="text-base text-[var(--text-secondary)] leading-relaxed font-light">
                   {project.design}
                 </p>
               </section>
 
               {/* 05: Development */}
-              <section id="development" className="space-y-4 pt-6 border-t border-white/10">
-                <div className="flex items-center gap-2 text-xs font-mono text-blue-400 uppercase tracking-widest">
+              <section id="development" className="space-y-4 pt-6 border-t border-[var(--border)]">
+                <div className="flex items-center gap-2 text-xs font-mono text-blue-600 dark:text-blue-400 uppercase tracking-widest font-semibold">
                   <span>05</span>
                   <span>// DEVELOPMENT</span>
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-black uppercase text-white tracking-tight">
+                <h2 className="text-2xl sm:text-3xl font-black uppercase text-[var(--text-primary)] tracking-tight">
                   Technical Implementation
                 </h2>
-                <p className="text-base text-zinc-300 leading-relaxed font-light">
+                <p className="text-base text-[var(--text-secondary)] leading-relaxed font-light">
                   {project.development}
                 </p>
               </section>
 
               {/* 06: Content */}
-              <section id="content" className="space-y-4 pt-6 border-t border-white/10">
-                <div className="flex items-center gap-2 text-xs font-mono text-emerald-400 uppercase tracking-widest">
+              <section id="content" className="space-y-4 pt-6 border-t border-[var(--border)]">
+                <div className="flex items-center gap-2 text-xs font-mono text-emerald-600 dark:text-emerald-400 uppercase tracking-widest font-semibold">
                   <span>06</span>
                   <span>// CONTENT &amp; MEDIA</span>
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-black uppercase text-white tracking-tight">
+                <h2 className="text-2xl sm:text-3xl font-black uppercase text-[var(--text-primary)] tracking-tight">
                   Video, Design &amp; Narrative Direction
                 </h2>
-                <p className="text-base text-zinc-300 leading-relaxed font-light">
+                <p className="text-base text-[var(--text-secondary)] leading-relaxed font-light">
                   {project.content}
                 </p>
               </section>
 
               {/* 07: Outcome */}
-              <section id="outcome" className="p-8 rounded-2xl bg-zinc-900 border border-blue-500/30 space-y-4">
-                <div className="flex items-center gap-2 text-xs font-mono text-emerald-400 uppercase tracking-widest">
+              <section id="outcome" className="p-8 rounded-2xl bg-[var(--surface-card)] border border-blue-500/30 space-y-4 shadow-xl">
+                <div className="flex items-center gap-2 text-xs font-mono text-emerald-600 dark:text-emerald-400 uppercase tracking-widest font-semibold">
                   <CheckCircle className="w-4 h-4" />
                   <span>07 // DELIVERABLE OUTCOME</span>
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-black uppercase text-white tracking-tight">
+                <h2 className="text-2xl sm:text-3xl font-black uppercase text-[var(--text-primary)] tracking-tight">
                   Project Outcome
                 </h2>
-                <p className="text-base text-zinc-200 leading-relaxed">
+                <p className="text-base text-[var(--text-secondary)] leading-relaxed font-medium">
                   {project.outcome}
                 </p>
 
-                <div className="pt-4 border-t border-white/10">
-                  <span className="text-xs font-mono uppercase tracking-wider text-zinc-400 block mb-3 font-semibold">
+                <div className="pt-4 border-t border-[var(--border)]">
+                  <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-muted)] block mb-3 font-semibold">
                     Key Deliverables Handed Over:
                   </span>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono">
                     {project.keyDeliverables.map((item) => (
-                      <div key={item} className="flex items-center gap-2 text-zinc-300">
-                        <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+                      <div key={item} className="flex items-center gap-2 text-[var(--text-primary)]">
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-blue-400" />
                         <span>{item}</span>
                       </div>
                     ))}
@@ -321,15 +318,15 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
           </div>
 
           {/* Project Pagination (Prev / Next) */}
-          <div className="pt-12 border-t border-white/10 flex items-center justify-between">
+          <div className="pt-12 border-t border-[var(--border)] flex items-center justify-between">
             <Link
               href={`/work/${prevProject.slug}`}
               className="group flex flex-col items-start"
             >
-              <span className="text-xs font-mono text-zinc-500 uppercase tracking-wider flex items-center gap-1 group-hover:text-blue-400">
+              <span className="text-xs font-mono text-[var(--text-muted)] uppercase tracking-wider flex items-center gap-1 group-hover:text-blue-600 dark:group-hover:text-blue-400">
                 <ArrowLeft className="w-3.5 h-3.5" /> Previous Project
               </span>
-              <span className="text-base sm:text-lg font-bold text-white group-hover:text-blue-400 transition-colors uppercase">
+              <span className="text-base sm:text-lg font-bold text-[var(--text-primary)] group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors uppercase">
                 {prevProject.title}
               </span>
             </Link>
@@ -338,10 +335,10 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
               href={`/work/${nextProject.slug}`}
               className="group flex flex-col items-end text-right"
             >
-              <span className="text-xs font-mono text-zinc-500 uppercase tracking-wider flex items-center gap-1 group-hover:text-blue-400">
+              <span className="text-xs font-mono text-[var(--text-muted)] uppercase tracking-wider flex items-center gap-1 group-hover:text-blue-600 dark:group-hover:text-blue-400">
                 Next Project <ArrowRight className="w-3.5 h-3.5" />
               </span>
-              <span className="text-base sm:text-lg font-bold text-white group-hover:text-blue-400 transition-colors uppercase">
+              <span className="text-base sm:text-lg font-bold text-[var(--text-primary)] group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors uppercase">
                 {nextProject.title}
               </span>
             </Link>
